@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>{% block title %}{% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+    />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Pacifico&family=Work+Sans&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css?family=Roboto"
+    rel="stylesheet"
+  />
+  <link
+  href="https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap"
+  rel="stylesheet"
+/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="area"></div><nav class="main-menu">
+        <ul>
+    <!-- Table for Each Position <li class="has-subnav">
+            <a href="{{ url_for('Indexs') }}">
+               <i class="fa fa-comments fa-2x"></i>
+                <span class="nav-text">
+                  VOTING PAGES
+                </span>
+            </a>
+            
+        </li>
+        <li class="has-subnav">
+          <a href="{{url_for('Index')}}">
+             <i class="fa fa-comments fa-2x"></i>
+              <span class="nav-text">
+                  PRESIDENT CANDIDATE'S
+              </span>
+          </a>
+          
+      </li>
+            <li class="has-subnav">
+                <a href="{{url_for('Pres')}}">
+                  <i class="fa fa-solid fa-users"></i>
+                    <span class="nav-text">
+                        VICE_PRESIDENT
+                    </span>
+                </a>      
+            </li>
+            <li>
+              <a href="{{url_for('secretary')}}">
+                <i class=" fa fa-solid fa-school"></i>
+                  <span class="nav-text">
+                    SECRETARY
+                  </span>
+              </a>         
+          </li>    
+          -->    
+          <li class="has-subnav">
+            <a href="{{url_for('newcandi')}}">
+               <i> <img src="../static/sd.png" class="imgmo"></i>
+                <span class="nav-text">
+                    Create Position
+                </span>
+            </a>
+           
+        </li>
+        <li class="has-subnav">
+          <a href="{{url_for('candidatesko')}}">
+             <i><img src="../static/candi.png" class="imgmo"></i>
+              <span class="nav-text">
+                Candidate's
+              </span>
+          </a>            
+      </li>
+      <li class="has-subnav">
+        <a href="{{url_for('mgaboto')}}">
+          <i><img src="../static/star1.png" class="imgmo"></i>
+            <span class="nav-text">
+                Ranking
+            </span>
+        </a>
+       
+    </li>
+            <li class="has-subnav">
+                <a href="{{url_for('treasurer')}}">
+                  <i><img src="../static/voter.png" class="imgmo"></i>
+                    <span class="nav-text">
+                        Voter's Id
+                    </span>
+                </a>            
+            </li>
+           
+           
+        </li>
+        <li class="has-subnav">
+          <a href="{{url_for('newboto')}}">
+            <i><img src="../static/section.png" class="imgmo"></i>
+              <span class="nav-text">
+                  Voting Section
+              </span>
+          </a>
+         
+      </li>
+    
+          
+        </ul>
+  
+        <ul class="logout">
+            <li>
+               <a href="#">
+                     <i class="fa fa-power-off fa-2x"></i>
+                    <span class="nav-text">
+                        Logout
+                    </span>
+                </a>
+            </li>  
+        </ul>
+    </nav>
+      </nav>
+    <div class="content">{% block content %}{% endblock %}</div>
+  </body>
+</html>

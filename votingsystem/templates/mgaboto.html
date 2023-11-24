@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Candidate Form</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='ranking.css') }}"
+    />
+  </head>
+  <body>
+    <div class="akonato">
+      <div class="contest">
+        <div class="row-one">
+          <h1 data-text="CADIDATE'S RANKING" style="  color: #00214d;">CADIDATE'S RANKING</h1>
+          <p class="lovetext">
+            Lorem ipsum dolor sit amet consectetur adipisicing<br />
+            Tempore facilis quis nihil, magnam cupiditate <br />unde labore
+            totam quisquam doloremque.<br />
+            <br />         
+          </p>
+        </div>
+        <div class="row-ones">
+          <img src="../static/rankin.jpg" class="pictures" />
+        </div>
+      </div>
+      {% if tables_and_rows %}
+    {% for table, rows in tables_and_rows.items() %}
+        {% if table != 'botomo' %}   
+          <button type="button" class="btn btn-primary " id="qwe" data-toggle="modal" data-target="#{{ table|replace(" ", "") }}Modal" style="transform: translateX(80px);margin-bottom: 5px; margin-top: 20px; background-color: #00ebc7; color: #00214d;font-weight: 700;text-transform: uppercase;">
+            Ranking For {{ table }}
+        </button>
+       
+
+            <!-- The Modal for this table -->
+            <div class="modal" id="{{ table|replace(" ", "") }}Modal" >
+                <div class="modal-dialog" style="transform: translateX(-200px);" >
+                    <div class="modal-content" style="width: 200%;height:100px;" >
+                        <div class="modal-header" style="  background-color: #232946;" >                                             
+                        </div>                  
+                        <div class="modal-body" style="transform: translateY(-10px);background-color: #232946;height: 600px;">
+                            <div class="container" style="height: 540px;transform: translateY(-40px)">
+                                <section style="transform: translateY(-30px)">
+                                    <h2 class="se">POSITION : {{ table }}</h2>
+                                    {% if rows %}
+                                        <div class="tbl-header">
+                                            <table cellpadding="0" cellspacing="0" border="0">
+                                                <thead>
+                                                <tr>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">BOTO</th>
+                                                </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                        <div class="tbl-content">
+                                            <table cellpadding="0" cellspacing="0" border="0">
+                                                <tbody>
+                                                {% for row in rows %}
+                                                    <tr>
+                                                        <td>{{ row.1 }}</td>
+                                                        <td>{{ row.2 }}</td>
+                                                    </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    {% else %}
+                                        <p>No Candidate. Please Add Candidates for Position: {{ table }}.</p>
+                                    {% endif %}
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal" style="margin-top: 20px;transform: translateX(770px); background-color: #f582ae;"  >Close</button>
+                                </section>
+                           
+                        
+                    
+                            </div>
+                        </div>
+
+                        <!-- Modal Footer -->
+                       
+
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% else %}
+    <p>No tables available.</p>
+{% endif %}
+    </div>
+    
+
+    <script>
+      // '.tbl-content' consumed little space for vertical scrollbar, scrollbar width depend on browser/os/platfrom. Here calculate the scollbar width .
+      $(window)
+        .on("load resize ", function () {
+          var scrollWidth =
+            $(".tbl-content").width() - $(".tbl-content table").width();
+          $(".tbl-header").css({ "padding-right": scrollWidth });
+        })
+        .resize();
+    </script>
+    <!-- Script imports -->
+    <script src="{{ url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    {% extends 'layout.html' %}
+  </body>
+</html>

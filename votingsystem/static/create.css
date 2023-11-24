@@ -1,0 +1,82 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 500px;
+  position: absolute;
+  left: 10%;
+  top: 30%;
+  color: #b8c1ec;
+  background-color: #232946;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  font-size: 35px;
+  letter-spacing: 2px;
+  font-family: "Playfair Display SC", serif;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: "Playfair Display SC", serif;
+}
+
+input {
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+::-webkit-input-placeholder {
+  text-transform: uppercase;
+  font-family: "Playfair Display SC", serif;
+}
+button {
+  padding: 10px;
+  background: #eebbc3;
+  color: #232946;
+  border: none;
+  border-radius: 4px;
+  font-family: "Playfair Display SC", serif;
+  cursor: pointer;
+}
+
+button:hover {
+  background: rgb(0, 172, 238);
+  color: white;
+}
+.image {
+  position: absolute;
+  right: 5%;
+  top: 1%;
+}
+.image > img {
+  width: 700px;
+  height: 700px;
+}
+.logo {
+  position: absolute;
+  left: 5%;
+  top: 2%;
+}
+.logo > img {
+  width: 200px;
+  height: 25px;
+}

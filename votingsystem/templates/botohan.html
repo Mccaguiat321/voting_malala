@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ANG GALING</title>
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='stile.css') }}"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+ 
+  </head>
+
+  <body>
+    <div class="pps">
+      <div class="logo"><img src="../static/logo1.png" alt="" /></div>
+      <div class="row1s">
+        <h1 data-text="VOTING SYSTEM">VOTING SYSTEM</h1>
+        <p class="asd">
+          "Vote for leaders who prioritize unity, justice, and progress.<br> Every vote shapes our collective destiny. Participate<br>  in democracy for positive change."<br>
+    
+        </p>
+        <a href="#scrooling"
+          ><button class="custom-btn btn-7 qwe">Vote Now</button></a
+        >
+        <div class="load-wrapp">
+          <div class="load-3">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row1">
+        <div class="content">
+          <img src="../static/asdasdasd.jpg" />
+        </div>
+      </div>
+    </div>
+
+    <div class="mc">
+      {% with messages = get_flashed_messages() %} {% if messages %} {% for
+      message in messages %}
+      <div
+        class="alert alert-success alert-dismissable asdasdasdsad"
+        role="alert"
+      >
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="close"
+        >
+          <span aria-hidden="true" style="transform: translateY(-400px)"
+            ><p class="koko">&times;</p></span
+          >
+        </button>
+        {{message}}
+      </div>
+      {% endfor %} {% endif %} {% endwith %}
+
+      <form
+        method="POST"
+        action="{{ url_for('update_values') }}"
+        style="transform: translateY(70px)"
+      >
+        <div class="sd">
+          <div class="marnell">
+            <h2>NOTE</h2>
+            <p>You Can On Vote :</p>
+            {% for table, values in numbercheck_data.items() %} {% if table !=
+            'botomo' %}
+
+            <p style="color: black" class="check">
+              *<span class="values">{{ values }}</span> >
+              <span class="spanssssss">Candidate's From : </span>
+              <span class="tableee">{{table}}</span>
+            </p>
+
+            {% endif %} {% endfor %}
+            <div class="form__group">
+              <input
+                type="text"
+                class="form__input"
+                id="idid"
+                name="idnumber"
+                placeholder="Voter's ID"
+                required=""
+              />
+              <label for="name" class="form__label">Voter's ID</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="bot">
+          <button type="submit" class="custom-btn btn-7 qweewew">submit</button>
+        </div>
+        <div class="siction">
+        <div class="section">
+          {% if tables_and_rows %} {% for position, data in
+          tables_and_rows.items() %} {% if position != "botomo" %}
+          <h2 class="se" id="scrooling">Position: {{ position }}</h2>
+          <!-- Table for Each Position -->
+          {% if data %}
+          <section>
+            <div class="tbl-header">
+              <table cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                  <tr>
+                    <th>Action</th>
+                    <th class="namenamename">Name</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            <div class="tbl-content">
+              <table cellpadding="0" cellspacing="0" border="0">
+                <tbody>
+                  {% for row in data %}
+                  <tr class="rowroworwyoutboat">
+                    <td>
+                      <div class="checkbox-container">
+                        <input
+                          type="checkbox"
+                          id="{{ 'c_' + position + '_' + loop.index|string }}"
+                          name="{{ position }}"
+                          value="{{ row.1 }}"
+                          class="checkbox limit-checkbox"
+                          data-limit="{{ numbercheck_data.get(position, 0) }}"
+                          {%
+                          if
+                          row.checked
+                          %}
+                          checked
+                          {%
+                          endif
+                          %}
+                        />
+                        <label
+                          for="{{ 'c_' + position + '_' + loop.index|string }}"
+                        >
+                          <span></span>
+                        </label>
+                      </div>
+                    </td>
+                    <td class="namename">{{ row.1 }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </section>
+          {% else %}
+          <p>
+            No Candidate. Please Add Candidate for Position: {{ position }}.
+          </p>
+          {% endif %} {% endif %} {% endfor %} {% else %}
+          <p>No tables available.</p>
+          {% endif %}
+          </div>
+        </div>
+        </div>
+      </form>
+    </div>
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <h6>About</h6>
+            <p class="text-justify">An online voting system streamlines elections by allowing voters to cast secure and authenticated votes remotely via the internet. This digital platform enhances accessibility, transparency, and the efficiency of the election process, ensuring a reliable and convenient voting experience.</p>
+          </div>
+
+          <div class="col-xs-6 col-md-3">
+            <h6>Made In</h6>
+            <ul class="footer-links">
+              <li><a href="http://scanfcode.com/category/c-language/">Python</a></li>
+              <li><a href="http://scanfcode.com/category/front-end-development/">Flask</a></li>
+              <li><a href="http://scanfcode.com/category/back-end-development/">Html</a></li>
+              <li><a href="http://scanfcode.com/category/java-programming-language/">Css</a></li>
+              <li><a href="http://scanfcode.com/category/android/">Javscript</a></li>
+              <li><a href="http://scanfcode.com/category/templates/">Bootstrap</a></li>
+            </ul>
+          </div>
+
+          <div class="col-xs-6 col-md-3">
+            <h6>Quick Links</h6>
+            <ul class="footer-links">
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">Contribute</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Sitemap</a></li>
+            </ul>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-sm-6 col-xs-12">
+            <p class="copyright-text">Copyright &copy; 2023 All Rights Reserved by 
+         <a href="https://web.facebook.com/mc.caguiat.3">Mc Caguiat</a>.
+            </p>
+          </div>
+
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <ul class="social-icons">
+              <li><a class="facebook" href="#"><i class="fa-brands fa-facebook"></i></a></li>
+              <li><a class="twitter" href="#"><i class="fa-brands fa-twitter"></i></a></li>
+              <li><a class="dribbble" href="#"><i class="fa-brands fa-dribbble"></i></a></li>
+              <li><a class="linkedin" href="#"><i class="fa-brands fa-linkedin"></i></a></li>   
+            </ul>
+          </div>
+        </div>
+      </div>
+</footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var checkboxes = document.querySelectorAll(".limit-checkbox");
+
+        checkboxes.forEach(function (checkbox) {
+          checkbox.addEventListener("change", function () {
+            var maxCheckCount = parseInt(this.dataset.limit);
+
+            var checkedCount = document.querySelectorAll(
+              'input[name="' + this.name + '"]:checked'
+            ).length;
+
+            if (checkedCount > maxCheckCount) {
+              this.checked = false;
+            }
+          });
+        });
+      });
+    </script>
+    <script>
+      window.addEventListener("scroll", function () {
+        var contentHeight = document.querySelector(".mc").offsetHeight;
+        var fixedDiv = document.querySelector(".sd");
+
+        var scrollPercentage = (window.scrollY / contentHeight) * 100;
+
+        if (scrollPercentage >= 20) {
+          fixedDiv.style.position = "sticky";
+          fixedDiv.style.top = "-55%";
+        } else {
+          fixedDiv.style.position = "static";
+          fixedDiv.style.top = "auto";
+        }
+      });
+    </script>
+    <script>
+      window.addEventListener("scroll", function () {
+        var contentHeight = document.querySelector(".mc").offsetHeight;
+        var fixedDiv = document.querySelector(".bot");
+
+        var scrollPercentage = (window.scrollY / contentHeight) * 100;
+
+        if (scrollPercentage >= 20) {
+          fixedDiv.style.position = "sticky";
+          fixedDiv.style.top = "-4%";
+        } else {
+          fixedDiv.style.position = "static";
+          fixedDiv.style.top = "auto";
+        }
+      });
+    </script>
+    <script>
+      $(window)
+        .on("load resize ", function () {
+          var scrollWidth =
+            $(".tbl-content").width() - $(".tbl-content table").width();
+          $(".tbl-header").css({ "padding-right": scrollWidth });
+        })
+        .resize();
+    </script>
+    <script>
+      var inputElement = document.getElementById('idid');
+  
+      inputElement.addEventListener('input', function (event) {
+          // Get the input value
+          var inputValue = event.target.value;
+  
+          // Use a regular expression to allow only numbers
+          var numericInput = inputValue.replace(/[^0-9]/g, '');
+  
+          // Update the input value with only the allowed characters
+          event.target.value = numericInput;
+      });
+  </script>
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='js/jquery-3.2.1.min.js') }}"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  </body>
+</html>

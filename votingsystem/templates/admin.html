@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ANG GALING</title>
+    <style>
+      /* Add some basic CSS styles for checkboxes */
+      .checkbox-container {
+        display: inline-block;
+        margin-right: 10px;
+      }
+  
+      .checkbox-label {
+        cursor: pointer;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Work+Sans&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body> 
+        <h1 class="text-center alert "></h1>
+            {%with messages = get_flashed_messages()%} {%if messages%} {% for
+            message in messages %}
+            <div class="alert alert-success alert-dismissable" role="alert">
+              <button
+                type="button"
+                class="close"
+                data-dismiss="alert"
+                aria-label="close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+              {{message}}
+            </div>
+            {%endfor%} {%endif%} {%endwith%}  
+  
+            <!-- End of Enter New Student Modal -->
+            <form method="POST" action="/update_value">.
+              
+              </form>
+            <table class="table table-hover" id="table">
+              <div class="fl">
+                <label>Voters Id</label>
+              <input type="number" name="idnumber" id="number" required>
+              </div>
+              <thead>
+                <tr>
+                  <th scope="col">Action</th>
+                  <th scope="col">President</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for row in president_data %}
+                <tr>
+                  <td>
+                 
+                      <div class="checkbox-container">
+                          <input type="checkbox" id="c1_{{ loop.index }}" name="president" value="{{ row.1 }}" class="checkbox">
+                          <label for="c1_{{ loop.index }}">  
+                              <span></span>                                
+                          </label>                
+                      </div>
+                  </td>
+                  <td>{{ row.1 }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+              
+            </table>             
+              <table class="table table-hover" id="tables">
+                <thead>
+                  <tr>
+                    <th scope="col">Action</th>
+                    <th scope="col">Vice President</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for row in vice_president_data %}
+                  <tr>
+                    <td>
+                      <input type="checkbox" id="c2_{{ loop.index }}" value="{{ row.1 }}"name="vice_president"class="checkboxs"  >
+                      <label for="c2_{{ loop.index }}">
+                        <span></span>
+                      </label>
+                    </td>
+                    <td>{{ row.1 }}</td>
+                </input>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </table>             
+            <table class="table table-hover" id="tabless">
+              <thead>
+                <tr>
+                  <th scope="col">Action</th>
+                  <th scope="col">Secretary</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for row in secretary %}
+                <tr>
+                  <td>
+                    <div class="checkbox-container">
+                      <input type="checkbox" id="c3_{{ loop.index }}" value="{{ row.1 }}" name="secretary" class="checkboxz">
+                      <label for="c3_{{ loop.index }}">
+                        <span></span>
+                      </label>
+                    </div>
+                  </td>
+                  <td>{{ row.1 }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            <table class="table table-hover" id="tablesss">
+              <thead>
+                <tr>
+                  <th scope="col">Action</th>
+                  <th scope="col">Treasurer</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for row in treasurer %}
+                <tr>
+                  <td>
+                    <div class="checkbox-container">
+                      <input type="checkbox" id="c4_{{ loop.index }}"value="{{ row.1 }}"  name="treasurer" class="checkboxzz">
+                      <label for="c4_{{ loop.index }}">
+                        <span></span>
+                      </label>
+                    </div>
+                  </td>
+                  <td>{{ row.1 }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+              <button type="submit" class="custom-btn btn-7 ">submit</button>
+       
+            </form>
+              
+  
+      
+    
+      </div>
+      <script>
+        const checkboxes = document.querySelectorAll('.checkbox');
+        checkboxes.forEach(checkbox => {
+          checkbox.addEventListener('change', () => {
+            checkboxes.forEach(otherCheckbox => {
+              if (otherCheckbox !== checkbox) {
+                otherCheckbox.checked = false;
+              }
+            });
+          });
+        });
+      
+        const checkboxess = document.querySelectorAll('.checkboxs');
+        checkboxess.forEach(checkbox => {
+          checkbox.addEventListener('change', () => {
+            checkboxess.forEach(otherCheckbox => {
+              if (otherCheckbox !== checkbox) {
+                otherCheckbox.checked = false;
+              }
+            });
+          });
+        });
+      
+        const checkboxesss = document.querySelectorAll('.checkboxz');
+        checkboxesss.forEach(checkbox => {
+          checkbox.addEventListener('change', () => {
+            checkboxesss.forEach(otherCheckbox => {
+              if (otherCheckbox !== checkbox) {
+                otherCheckbox.checked = false;
+              }
+            });
+          });
+        });
+      
+        const checkboxessss = document.querySelectorAll('.checkboxzz');
+        checkboxessss.forEach(checkbox => {
+          checkbox.addEventListener('change', () => {
+            checkboxessss.forEach(otherCheckbox => {
+              if (otherCheckbox !== checkbox) {
+                otherCheckbox.checked = false;
+              }
+            });
+          });
+        });
+      </script>
+      <script
+        type="text/javascript"
+        src="{{ url_for('static', filename='js/jquery-3.2.1.min.js') }}"
+      ></script>
+      <script
+        src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"
+      ></script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+      {% extends 'layout.html' %}
+    </p>
+  
+    <script>
+        $(document).ready(function() {
+          $(".president-checkbox").change(function() {
+            if (this.checked) {
+              $(".president-checkbox").not(this).attr("disabled", true);
+            } else {
+              $(".president-checkbox").removeAttr("disabled");
+            }
+          });
+      
+          $(".vice-president-checkbox").change(function() {
+            if (this.checked) {
+              $(".vice-president-checkbox").not(this).attr("disabled", true);
+            } else {
+              $(".vice-president-checkbox").removeAttr("disabled");
+            }
+          });
+        });
+      </script>
+      
+  </body>
+</html>

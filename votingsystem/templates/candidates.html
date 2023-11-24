@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Candidate Form</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='add.css') }}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap" rel="stylesheet">
+<style>
+  html{
+    scroll-behavior: smooth;
+  }
+</style>
+  </head>
+  <body>
+
+    <div class="contain">
+     <div class="kolgit">
+      <div class="collla">
+        <h1 data-text= "VOTING SYSTEM">
+          VOTING SYSTEM</h1>
+        <p style=" font-family: 'Roboto Mono', monospace;font-weight: 600;">Lorem ipsum dolor sit amet consectetur adipisicing<br>  elit.
+           Cupiditatetempore consequatur a ullam! Iusto <br>eos, itaque 
+       ipsam dolor excepturi maxime impedit porro facilis. Volupta
+     Made By Unknown Coder</p>
+       <div ontouchstart="">
+        <div class="button">
+          <a href="#scrollmo">Show Candidate's </a>
+        </div>
+      </div>
+      </div>
+      <div class="colll"><img src="../static/Picsart_23-11-17_23-33-15-751.jpg" alt=""></div>
+     </div>
+    </div>
+    <div class="container">
+      <h2 id="scrollmo" >Candidate's </h2>
+ 
+      {% with messages = get_flashed_messages() %} {% if messages %} {% for
+      message in messages %}
+      <div class="alert alert-success alert-dismissable alertmomen" role="alert">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+        {{ message }}
+      </div>
+      {% endfor %} {% endif %} {% endwith %}
+   
+      {% if tables_and_rows %} {% for table, rows in tables_and_rows.items() %}
+      {% if table != 'botomo' %}
+      <h2 class="se">Position : {{ table }}</h2>
+      <button
+        class="btn btn-primary float-right"
+        data-toggle="modal"
+        data-target="#myModal_{{ table }}"
+        id="buttonmo"
+      >
+        Add {{ table }}
+      </button>
+      <a
+        href="{{ url_for('deletepos', table=table) }}"
+        onclick="return confirm('Are you sure you want to delete?')"
+        class="btn btn-warning btn-sm"
+        data-target="#myModal_{{ table }}"
+        id="tble"
+        >Delete position {{ table }}</a
+      >
+
+      <div id="myModal_{{ table }}" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5      
+                class="modal-title text-primary"
+                style="align-content: center"
+          
+              >
+                Add {{ table }}
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+        
+            <div class="modal-body">
+            
+              
+           
+              <form
+                action="{{ url_for('newinsert' , table=table)}}"
+                method="POST"
+              >
+              
+                <div class="form-group">
+                  <label>Full Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder="Enter Full Name"
+                  />
+             
+                  <input type="text" name="values" value="{{ numbercheck_data[table] }}" style="display: none;" > 
+          
+                </div>
+
+                <button type="submit" class="btn btn-primary mb-2">Save</button>
+              </form>
+       
+            </div>
+   
+          </div>
+        </div>
+      </div>
+
+      {% if rows %}
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+         
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in rows %}
+          <tr>
+            <td>{{ row.0 }}</td>
+            <td   class="namemmopala"> {{ row.1 }}</td>
+        
+            <td class="opop">
+              
+              <a href="{{ url_for('update_record', table=table, id_data=row[0]) }}"
+              class="btn btn-warning btn-sm"
+              data-toggle="modal"
+              data-target="#modaledit{{table}}_{{row[0]}}">Edit</a>
+           
+              <a
+                href="{{ url_for('deletessssss', table=table, id_data=row[0]) }}"
+                onclick="return confirm('Are you sure you want to delete?')"
+                class="btn btn-danger btn-sm"
+                >Delete</a
+              >
+
+              <div id="modaledit{{table}}_{{row[0]}}" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">                                                                                                                
+                            <h5 class="modal-tit le text-primary" style="align-content: center">
+                                Update {{row.1}} From {{table}} 
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{ url_for('update_record', table=table, id_data=row[0]) }}" method="POST">
+                                <input type="hidden" name="id" value="{{ row[0] }}" />
+            
+                                <div class="form-group">
+                                    <label>Full Name</label>
+                                    <input value="{{ row[1] }}" type="text" name="name" class="form-control" />
+                                </div>
+                                <button type="submit" class="btn btn-success mb-2">
+                                    Update
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+           
+              </td>
+            </td>
+          </tr>
+          {% endfor %}
+
+        </tbody>
+      </table>
+      {% else %}
+      <p>No Candidate Please Add Candidate On Position Of : {{ table }}.</p>
+      {% endif %} {% endif %} {% endfor %} {% else %}
+      <p>No tables available.</p>
+      {% endif %}
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const inputElement = document.getElementById("table_name");
+    
+            inputElement.addEventListener("keypress", function (event) {
+                const charCode = event.which || event.keyCode;
+                
+                if ((charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122) || charCode === 32) {
+                    return true;
+                } else {
+                    event.preventDefault();
+                    return false;
+                }
+            });
+        });
+    </script>
+    </div>
+    <script src="{{ url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    {% extends 'layout.html' %}
+  </body>
+</html>

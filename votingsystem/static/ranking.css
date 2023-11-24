@@ -1,0 +1,334 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fffffe;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1300px;
+  margin: 50px auto;
+  background-color: white;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+input {
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+button {
+  padding: 10px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.table-list {
+  margin-top: 20px;
+}
+
+.table-list h2 {
+  margin-bottom: 10px;
+}
+
+.table-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.table-list li {
+  margin-bottom: 5px;
+}
+
+.modal-header {
+  justify-content: center;
+}
+
+.modal-body {
+  padding: 20px;
+}
+.hrs {
+  width: 500px;
+  border: 5px solid black;
+}
+.se {
+  margin-top: 70px;
+  text-transform: uppercase;
+  font-family: "Kdam Thmor Pro", sans-serif;
+  color: #001858;
+}
+#buttonmo {
+  transform: translateY(-7px);
+  text-transform: uppercase;
+}
+.row-2 {
+  width: 400px;
+}
+#tble {
+  background-color: #d71313;
+  color: white;
+  text-transform: uppercase;
+  font-family: "Kdam Thmor Pro", sans-serif;
+}
+.opop {
+  width: 400px;
+}
+.namemmopala {
+  width: 900px;
+}
+.contain {
+  height: 100vh;
+  background: white;
+}
+.colll > img {
+  width: 700px;
+  height: 450px;
+  transform: translateY(100px);
+}
+.kolgit {
+  display: flex;
+  margin-left: 200px;
+}
+.collla {
+  margin-right: 100px;
+}
+.collla {
+  transform: translateY(250px);
+}
+.collla > h1 {
+  font-family: "Kdam Thmor Pro", sans-serif;
+  font-size: 50px;
+  letter-spacing: 5px;
+  transform: translateX(-18px);
+}
+
+.button {
+  position: relative;
+  display: inline-block;
+  margin: 20px;
+}
+
+.button a {
+  color: white;
+  font-family: Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  text-decoration: none;
+  background-color: #00ebc7;
+  display: block;
+  position: relative;
+  padding: 10px 40px;
+  transform: translateX(-30px);
+
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  text-shadow: 0px 1px 0px #000;
+  filter: dropshadow(color=#000, offx=0px, offy=1px);
+
+  -webkit-box-shadow: inset 0 1px 0 #ffe5c4, 0 10px 0 #915100;
+  -moz-box-shadow: inset 0 1px 0 #ffe5c4, 0 10px 0 #915100;
+  box-shadow: inset 0 1px 0 #ffe5c4, 0 10px 0 #915100;
+
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.button a:active {
+  top: 10px;
+  background-color: #f78900;
+
+  -webkit-box-shadow: inset 0 1px 0 #ffe5c4, inset 0 -3px 0 #915100;
+  -moz-box-shadow: inset 0 1px 0 #ffe5c4, inset 0 -3pxpx 0 #915100;
+  box-shadow: inset 0 1px 0 #ffe5c4, inset 0 -3px 0 #915100;
+}
+
+.button:after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  padding: 4px;
+  position: absolute;
+  bottom: -15px;
+  left: -4px;
+  z-index: -1;
+  background-color: #2b1800;
+  transform: translateX(-30px);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+#scrollmo {
+  font-size: 50px;
+  transform: translateY(40px);
+  font-weight: 800;
+  letter-spacing: 20px;
+  font-family: "Kdam Thmor Pro", sans-serif;
+  text-align: center;
+}
+
+h1 {
+  font-size: 30px;
+  color: #001858;
+  text-transform: uppercase;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 15px;
+  font-family: "Kdam Thmor Pro", sans-serif;
+}
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+.tbl-header {
+  background-color: black;
+}
+.tbl-content {
+  height: 292.5px;
+  overflow-x: auto;
+  margin-top: 0px;
+  border: 1px solid black;
+}
+th {
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: 900;
+  font-size: 12px;
+  color: rgb(238, 238, 238);
+  text-transform: uppercase;
+  background-color: #232946;
+  font-family: "Kdam Thmor Pro", sans-serif;
+}
+tbody {
+  background: #f2f7f5;
+}
+td {
+  padding: 15px;
+  text-align: left;
+  vertical-align: middle;
+  font-weight: 300;
+  font-size: 12px;
+  font-weight: 900;
+  color: black;
+  border-bottom: solid 1px black;
+  text-transform: uppercase;
+  font-family: "Kdam Thmor Pro", sans-serif;
+}
+
+/* demo styles */
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+
+section {
+  margin: 50px;
+}
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px black;
+}
+::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 6px black;
+}
+.akonato {
+  width: 100%;
+  height: 100vh;
+  background-color: #fff;
+}
+.akonato > button {
+  position: relative;
+  top: -8%;
+}
+.contest {
+  display: flex;
+  margin-left: 100px;
+}
+.pictures {
+  width: 830px;
+  height: 680px;
+}
+.row-one {
+  margin-top: 300px;
+  margin-right: 100px;
+}
+h1 {
+  font-family: "Teko", sans-serif;
+  text-transform: uppercase;
+  font-size: 40px;
+  text-align: center;
+  font-weight: 900;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  background: white;
+  color: #000;
+}
+
+h1:before {
+  content: attr(data-text);
+  position: absolute;
+  background: linear-gradient(#00ebc7, #ff5470, #00ebc7);
+  -webkit-background-clip: text;
+  color: transparent;
+  background-size: 100% 90%;
+  line-height: 0.9;
+  clip-path: ellipse(120px 120px at -2.54% -9.25%);
+  animation: swing 5s infinite;
+  animation-direction: alternate;
+}
+
+@keyframes swing {
+  0% {
+    -webkit-clip-path: ellipse(120px 120px at -2.54% -9.25%);
+    clip-path: ellipse(120px 120px at -2.54% -9.25%);
+  }
+  50% {
+    -webkit-clip-path: ellipse(120px 120px at 49.66% 64.36%);
+    clip-path: ellipse(120px 120px at 49.66% 64.36%);
+  }
+  100% {
+    -webkit-clip-path: ellipse(120px 120px at 102.62% -1.61%);
+    clip-path: ellipse(120px 120px at 102.62% -1.61%);
+  }
+}
+
+.lovetext {
+  font-size: 15px;
+  transform: translateX(22px);
+  font-family: "Roboto Mono", monospace;
+  color: #1b2d45;
+  font-weight: 600;
+}
+.row-one > h1 {
+  transform: translateX(18px);
+}
